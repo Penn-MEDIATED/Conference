@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penn MEDIATED Conference 2026</title>
+    <style>
+        /* Penn Brand Colors */
+        :root {
+            --penn-blue: #011F5B;
+            --penn-red: #990000;
+            --penn-gold: #C4972F;
+            --white: #FFFFFF;
+            --off-white: #F5F5F0;
+            --light-gray: #E8E8E8;
+            --dark-gray: #333333;
+            --medium-gray: #666666;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            color: var(--dark-gray);
+            background: var(--white);
+            line-height: 1.6;
+        }
+
+        /* ── Navigation ── */
+        nav {
+            background: var(--penn-blue);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .nav-logo {
+            color: white;
+            font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+            font-size: 1rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .nav-logo span { color: var(--penn-gold); }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav ul a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 0.82rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        nav ul a:hover { color: var(--penn-gold); }
+
+        /* ── Hero ── */
+        .hero {
+            background: var(--penn-blue);
+            color: white;
+            padding: 6rem 2rem 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 15% 60%, rgba(196,151,47,0.18) 0%, transparent 50%),
+                radial-gradient(ellipse at 85% 20%, rgba(153,0,0,0.22) 0%, transparent 40%),
+                radial-gradient(ellipse at 50% 100%, rgba(1,31,91,0) 0%, rgba(0,5,20,0.6) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .hero-eyebrow {
+            display: inline-block;
+            background: var(--penn-red);
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            padding: 0.35rem 1rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .hero h1 {
+            font-family: Georgia, serif;
+            font-size: clamp(3.5rem, 10vw, 7rem);
+            font-weight: 700;
+            line-height: 0.95;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.35rem;
+        }
+
+        .hero h1 .gold { color: var(--penn-gold); }
+
+        .hero-subtitle {
+            font-family: Arial, sans-serif;
+            font-size: clamp(0.75rem, 1.5vw, 1rem);
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.65);
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-rule {
+            width: 72px;
+            height: 3px;
+            background: var(--penn-gold);
+            margin: 0 auto 2.5rem;
+        }
+
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            gap: 3.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-meta-item { display: flex; flex-direction: column; align-items: center; }
+
+        .hero-meta-item .label {
+            font-family: Arial, sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--penn-gold);
+            margin-bottom: 0.3rem;
+        }
+
+        .hero-meta-item .value { font-size: 1.05rem; font-weight: 400; }
+
+        .invite-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 1px solid rgba(255,255,255,0.3);
+            color: rgba(255,255,255,0.8);
+            font-family: Arial, sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 0.5rem 1.4rem;
+        }
+
+        /* ── Shared Layout ── */
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        .section-label {
+            font-family: Arial, sans-serif;
+            font-size: 0.68rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--penn-red);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-label::after {
+            content: '';
+            height: 1px;
+            background: var(--light-gray);
+            width: 60px;
+        }
+
+        .section-title {
+            font-family: Georgia, serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--penn-blue);
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ── About ── */
+        .about { padding: 5.5rem 2rem; }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            nav ul { display: none; }
+        }
+
+        .about-text p {
+            font-size: 1.05rem;
+            color: var(--medium-gray);
+            margin-bottom: 1.1rem;
+            line-height: 1.85;
+        }
+
+        .pillars { display: flex; flex-direction: column; gap: 1.4rem; }
+
+        .pillar { display: flex; gap: 1.1rem; align-items: flex-start; }
+
+        .pillar-num {
+            font-family: Arial, sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--penn-gold);
+            background: var(--penn-blue);
+            width: 2.1rem;
+            height: 2.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .pillar-text { font-size: 0.93rem; color: var(--dark-gray); line-height: 1.65; }
+
+        .pillar-text strong {
+            display: block;
+            font-family: Arial, sans-serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--penn-blue);
+            margin-bottom: 0.25rem;
+        }
+
+        /* ── Schedule ── */
+        .schedule {
+            background: var(--penn-blue);
+            padding: 5.5rem 2rem;
+            color: white;
+        }
+
+        .schedule .section-label { color: var(--penn-gold); }
+        .schedule .section-label::after { background: rgba(255,255,255,0.2); }
+        .schedule .section-title { color: white; }
+
+        .day-tabs {
+            display: flex;
+            border-bottom: 1px solid rgba(255,255,255,0.18);
+            margin-bottom: 2.75rem;
+        }
+
+        .day-tab {
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -1px;
+            color: rgba(255,255,255,0.45);
+            font-family: Arial, sans-serif;
+            font-size: 0.82rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 1rem 2rem;
+            cursor: pointer;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .day-tab.active { color: white; border-bottom-color: var(--penn-gold); }
+        .day-tab:hover:not(.active) { color: rgba(255,255,255,0.75); }
+
+        .day-content { display: none; }
+        .day-content.active { display: block; }
+
+        .sched-date {
+            font-family: Arial, sans-serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--penn-gold);
+            margin-bottom: 2rem;
+        }
+
+        .sched-block { margin-bottom: 2.75rem; }
+
+        .sched-block-header {
+            font-family: Arial, sans-serif;
+            font-size: 0.66rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+            border-top: 1px solid rgba(255,255,255,0.14);
+            padding-top: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .sched-row {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 1.5rem;
+            padding: 0.9rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+            align-items: baseline;
+        }
+
+        .sched-time {
+            font-family: Arial, sans-serif;
+            font-size: 0.78rem;
+            color: var(--penn-gold);
+            letter-spacing: 0.03em;
+            padding-top: 0.1rem;
+        }
+
+        .sched-info .ev-title {
+            font-size: 0.97rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 0.2rem;
+        }
+
+        /* UPDATE HINT: Replace "TBA" lines with confirmed info */
+        .sched-info .ev-speaker {
+            font-family: Arial, sans-serif;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.55);
+        }
+
+        .sched-info .ev-detail {
+            font-family: Arial, sans-serif;
+            font-size: 0.74rem;
+            color: rgba(255,255,255,0.35);
+            font-style: italic;
+            margin-top: 0.15rem;
+        }
+
+        .sched-info .ev-sub {
+            font-family: Arial, sans-serif;
+            font-size: 0.74rem;
+            color: rgba(255,255,255,0.32);
+            font-style: italic;
+            margin-top: 0.2rem;
+        }
+
+        .tag-reception {
+            display: inline-block;
+            background: var(--penn-gold);
+            color: var(--penn-blue);
+            font-family: Arial, sans-serif;
+            font-size: 0.62rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: 0.18rem 0.45rem;
+            vertical-align: middle;
+            margin-left: 0.5rem;
+        }
+
+        /* ── Speakers ── */
+        .speakers { background: var(--off-white); padding: 5.5rem 2rem; }
+
+        .speakers-intro {
+            font-family: Arial, sans-serif;
+            font-size: 0.95rem;
+            color: var(--medium-gray);
+            max-width: 620px;
+            line-height: 1.75;
+            margin-bottom: 2.5rem;
+        }
+
+        .speakers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .speaker-card {
+            background: white;
+            border: 1px solid var(--light-gray);
+            padding: 1.75rem 1.25rem;
+            text-align: center;
+            transition: box-shadow 0.25s, transform 0.25s;
+        }
+
+        .speaker-card:hover {
+            box-shadow: 0 6px 24px rgba(1,31,91,0.12);
+            transform: translateY(-2px);
+        }
+
+        .speaker-card.placeholder { opacity: 0.45; pointer-events: none; }
+
+        .avatar {
+            width: 84px;
+            height: 84px;
+            border-radius: 50%;
+            background: var(--light-gray);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .avatar svg { width: 46px; height: 46px; color: #aaa; }
+        .avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+        .sp-name {
+            font-family: Georgia, serif;
+            font-size: 1rem;
+            color: var(--penn-blue);
+            margin-bottom: 0.25rem;
+        }
+
+        .sp-affil {
+            font-family: Arial, sans-serif;
+            font-size: 0.73rem;
+            color: var(--medium-gray);
+            line-height: 1.4;
+        }
+
+        .speakers-footnote {
+            font-family: Arial, sans-serif;
+            font-size: 0.85rem;
+            color: var(--medium-gray);
+            font-style: italic;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        /* ── Attend ── */
+        .attend {
+            background: var(--penn-red);
+            padding: 5rem 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .attend .section-label {
+            color: rgba(255,255,255,0.65);
+            justify-content: center;
+        }
+
+        .attend .section-label::before {
+            content: '';
+            height: 1px;
+            background: rgba(255,255,255,0.3);
+            width: 60px;
+        }
+
+        .attend .section-label::after { background: rgba(255,255,255,0.3); }
+
+        .attend h2 {
+            font-family: Georgia, serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1rem;
+        }
+
+        .attend p {
+            font-family: Arial, sans-serif;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.85);
+            max-width: 520px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
+        }
+
+        .btn-contact {
+            display: inline-block;
+            background: white;
+            color: var(--penn-red);
+            font-family: Arial, sans-serif;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 1.1rem 2.75rem;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .btn-contact:hover { background: var(--penn-blue); color: white; }
+
+        /* ── Footer ── */
+        footer {
+            background: #000D24;
+            color: rgba(255,255,255,0.45);
+            padding: 2.75rem 2rem;
+            text-align: center;
+        }
+
+        .ft-org {
+            font-family: Arial, sans-serif;
+            font-size: 0.78rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.65);
+            margin-bottom: 0.4rem;
+        }
+
+        .ft-addr {
+            font-family: Arial, sans-serif;
+            font-size: 0.73rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .ft-email a {
+            color: var(--penn-gold);
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 0.78rem;
+            transition: opacity 0.2s;
+        }
+
+        .ft-email a:hover { opacity: 0.75; }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════════════════════════════════════
+         NAVIGATION
+    ═══════════════════════════════════════ -->
+    <nav>
+        <div class="nav-logo">Penn <span>MEDIATED</span></div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#schedule">Schedule</a></li>
+            <li><a href="#speakers">Speakers</a></li>
+            <li><a href="#attend">Attend</a></li>
+        </ul>
+    </nav>
+
+    <!-- ═══════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════ -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-eyebrow">Inaugural Conference &nbsp;&bull;&nbsp; August 2026</div>
+            <h1>Penn <span class="gold">MEDIATED</span></h1>
+            <p class="hero-subtitle">Media &nbsp;&bull;&nbsp; Technology &nbsp;&bull;&nbsp; Democracy</p>
+            <div class="hero-rule"></div>
+            <div class="hero-meta">
+                <div class="hero-meta-item">
+                    <span class="label">Dates</span>
+                    <span class="value">August 24 &ndash; 25, 2026</span>
+                </div>
+                <div class="hero-meta-item">
+                    <span class="label">Location</span>
+                    <span class="value">University of Pennsylvania &mdash; Philadelphia, PA</span>
+                </div>
+                <div class="hero-meta-item">
+                    <span class="label">Format</span>
+                    <span class="value">Plenary &amp; Breakout Sessions</span>
+                </div>
+            </div>
+            <div class="invite-pill">&#x1F512;&nbsp; Invitation Only</div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         ABOUT
+    ═══════════════════════════════════════ -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-label">About the Conference</div>
+            <div class="about-grid">
+                <div>
+                    <h2 class="section-title">A New Convening for the Information Ecosystem</h2>
+                    <div class="about-text">
+                        <p>The Penn Center on Media, Technology, and Democracy (Penn MEDIATED) is pleased to host our inaugural MEDIATED Conference &mdash; an annual convening focused on the rigorous study of the information ecosystem and its impact on democracy.</p>
+                        <p>The conference endeavors to elevate cutting-edge empirical research to build a panoramic view of the media and informational landscape, illuminating the path to a healthier information ecosystem and a stronger democracy.</p>
+                        <p>By centering empirical research, the MEDIATED Conference challenges assumptions widely held by advocates and policymakers, enabling interventions grounded in evidence rather than anecdote.</p>
+                    </div>
+                </div>
+                <div class="pillars">
+                    <div class="pillar">
+                        <div class="pillar-num">01</div>
+                        <div class="pillar-text">
+                            <strong>Ecosystem Scope</strong>
+                            Incorporates newspapers, radio, TV, web search, social media, podcasts, political speech, artificial intelligence, influencers, and peer-to-peer communications.
+                        </div>
+                    </div>
+                    <div class="pillar">
+                        <div class="pillar-num">02</div>
+                        <div class="pillar-text">
+                            <strong>Cross-Sector Convening</strong>
+                            Unites academics, civil society organizations, media and journalism leaders, information technology companies, and government officials for evidence-based re-evaluation.
+                        </div>
+                    </div>
+                    <div class="pillar">
+                        <div class="pillar-num">03</div>
+                        <div class="pillar-text">
+                            <strong>Research to Practice</strong>
+                            Bridges computational research and tools with scalable, implementable approaches to improve digital information technologies.
+                        </div>
+                    </div>
+                    <div class="pillar">
+                        <div class="pillar-num">04</div>
+                        <div class="pillar-text">
+                            <strong>Critical Threats</strong>
+                            Addresses affective polarization, deteriorating digital public discourse, authoritarian propaganda, and the crisis of journalism.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SCHEDULE
+         ─────────────────────────────────────
+         HOW TO UPDATE:
+         • Speakers: replace "Speaker TBA" with the confirmed name
+           and "Discussants TBA" with discussant names
+         • Breakout sessions: replace the "ev-sub" note with session
+           titles and organizers (one <div class="ev-sub"> per session)
+         • Reception venue: replace "Venue TBA" with the location
+    ═══════════════════════════════════════ -->
+    <section class="schedule" id="schedule">
+        <div class="container">
+            <div class="section-label">Program</div>
+            <h2 class="section-title">Conference Schedule</h2>
+
+            <div class="day-tabs">
+                <button class="day-tab active" onclick="switchDay(0)">Day 1 &mdash; August 24</button>
+                <button class="day-tab" onclick="switchDay(1)">Day 2 &mdash; August 25</button>
+            </div>
+
+            <!-- ─── DAY 1 ─── -->
+            <div class="day-content active" id="day-1">
+                <div class="sched-date">Monday, August 24, 2026</div>
+
+                <div class="sched-block">
+                    <div class="sched-block-header">Morning &mdash; Plenary Sessions</div>
+
+                    <div class="sched-row">
+                        <div class="sched-time">9:00 &ndash; 9:30</div>
+                        <div class="sched-info">
+                            <div class="ev-title">Registration and Coffee</div>
+                        </div>
+                    </div>
+
+                    <div class="sched-row">
+                        <div class="sched-time">9:30 &ndash; 9:45</div>
+                        <div class="sched-info">
+                            <div class="ev-title">Welcome Remarks</div>
+                            <div class="ev-speaker">Duncan Watts and Alex Engler</div>
+                        </div>
+                    </div>
+
+                    <div class="sched-row">
+                        <div class="sched-time">9:45 &ndash; 11:00</div>
+                        <div class="sched-info">
+                            <div class="ev-title">Plenary Keynote</div>
+                            <!-- UPDATE: Replace with confirmed speaker name & title -->
+                            <div class="ev-speaker">Speaker TBA</div>
+                            <!-- UPDATE: Replace with confirmed discussant names -->
+                            <div class="ev-detail">Discussants TBA</div>
+                        </div>
+                    </div>
+
+                    <div class="sched-row">
+                        <div class="sched-time">11:00 &ndash; 11:15</div>
+                        <div class="sched-info">
+                            <div class="ev-title">Coffee, Snacks &amp; Networking</div>
+                        </div>
+                    </div>
+
+                    <div class="sched-row">
+                        <div class="sched-time">11:25 &ndash; 12:30</div>
+                        <div class="sched-info">
+                            <div class="ev-title">Plenary Keynote</div>
+                            <!-- UPDATE: Replace with confirmed speaker name & title -->
+                            <div class="ev-speaker">Speaker TBA</div>
+                            <!-- UPDATE: Replace with confirmed discussant names -->
+                            <div class="ev-detail">Discussants TBA</div>
+                        </div>
+                    </div>
+
+                    <div class="sched-row">
+                        <div class="sched-time">12:30 &ndash; 1:40</div>
+                        <div class="sched-info">
+                            <div class="ev-title">Lunch</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sched-block">
+                    <div class="sched-block-header">Afternoon &mdash; Breakout Sessions</div>
+
+                    <div class="sched-row">
+                        <div class="sched-time">1:40 &ndash; 2:55</div>
+                        <div class="sched-info">
+                            <div class="ev-title">Penn-Organized Breakout Sessions</div>
+                            <!-- UPDATE: Replace each line below with a session title and organizer -->
+                            <div class="ev-sub">Session A &mdash; Title TBA</div>
+                            <div class="ev-sub">Session B &mdash; Title TBA</div>
+                            <div class="ev-sub">Session C &mdash; Title TBA</div>
+                        </div>
+                    </div>
+
+                    <div class="sched-row">
+                        <div class="sched-time">2:55 &ndash; 3:15</div>
+                        <div class="sched-info">
+                            <div class="ev-title">Coffee, Snacks &amp; Networking</div>
+                        </div>
+                    </div>
+
+                    <div class="sched-row">
+                        <div class="sched-time">3:15 &ndash; 4:30</div>
+                        <div class="sched-info">
+                            <div class="ev-title">Partner-Organized Breakout Sessions</div>
+                            <!-- UPDATE: Replace each line below with partner name and session title -->
+                            <div class="ev-sub">Session A &mdash; Title TBA</div>
+                            <div class="ev-sub">Session B &mdash; Title TBA</div>
+                            <div class="ev-sub">Session C &mdash; Title TBA</div>
+                        </div>
+                    </div>
+
+                    <div class="sched-row">
+                        <div class="sched-time">4:30 &ndash; 5:00</div>
+                        <div class="sched-info">
+                            <div class="ev-title">Closing Remarks</div>
+                            <div class="ev-speaker">Christopher Yoo and Alex Engler</div>
+                        </div>
+                    </div>
+
+                    <div class="sched-row">
+                        <div class="sched-time">5:00 &ndash; 6:30</div>
+                        <div class="sched-info">
+                            <div class="ev-title">Reception &amp; Poster Session <span class="tag-reception">Reception</span></div>
+                            <!-- UPDATE: Replace with confirmed reception venue -->
+                            <div class="ev-detail">Venue TBA</div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /day-1 -->
+
+            <!-- ─── DAY 2 ─── -->
+            <div class="day-content" id="day-2">
+                <div class="sched-date">Tuesday, August 25, 2026</div>
+
+                <div class="sched-block">
+                    <div class="sched-block-header">Morning &mdash; Plenary Sessions</div>
+
+                    <div class="sched-row">
+                        <div class="sched-time">9:00 &ndash; 9:30</div>
+                        <div class="sched-info">
+                            <div class="ev-title">Coffee</div>
+                        </div>
+                    </div>
+
+                    <div class="sched-row">
+                        <div class="sched-time">9:30 &ndash; 9:45</div>
+                        <div class="sched-info">
+                            <div class="ev-title">Welcome Remarks</div>
+                            <div class="ev-speaker">Alex Engler</div>
+                        </div>
+                    </div>
+
+                    <div class="sched-row">
+                        <div class="sched-time">9:45 &ndash; 11:00</div>
+                        <div class="sched-info">
+                            <div class="ev-title">Plenary Keynote</div>
+                            <!-- UPDATE: Replace with confirmed speaker name & title -->
+                            <div class="ev-speaker">Speaker TBA</div>
+                            <!-- UPDATE: Replace with confirmed discussant names -->
+                            <div class="ev-detail">Discussants TBA</div>
+                        </div>
+                    </div>
+
+                    <div class="sched-row">
+                        <div class="sched-time">11:00 &ndash; 11:15</div>
+                        <div class="sched-info">
+                            <div class="ev-title">Coffee, Snacks &amp; Networking</div>
+                        </div>
+                    </div>
+
+                    <div class="sched-row">
+                        <div class="sched-time">11:25 &ndash; 12:30</div>
+                        <div class="sched-info">
+                            <div class="ev-title">Plenary Keynote</div>
+                            <!-- UPDATE: Replace with confirmed speaker name & title -->
+                            <div class="ev-speaker">Speaker TBA</div>
+                            <!-- UPDATE: Replace with confirmed discussant names -->
+                            <div class="ev-detail">Discussants TBA</div>
+                        </div>
+                    </div>
+
+                    <div class="sched-row">
+                        <div class="sched-time">12:30 &ndash; 1:40</div>
+                        <div class="sched-info">
+                            <div class="ev-title">Lunch</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sched-block">
+                    <div class="sched-block-header">Afternoon &mdash; Breakout Sessions</div>
+
+                    <div class="sched-row">
+                        <div class="sched-time">1:40 &ndash; 2:55</div>
+                        <div class="sched-info">
+                            <div class="ev-title">Penn-Organized Breakout Sessions</div>
+                            <!-- UPDATE: Replace each line below with a session title and organizer -->
+                            <div class="ev-sub">Session A &mdash; Title TBA</div>
+                            <div class="ev-sub">Session B &mdash; Title TBA</div>
+                            <div class="ev-sub">Session C &mdash; Title TBA</div>
+                        </div>
+                    </div>
+
+                    <div class="sched-row">
+                        <div class="sched-time">2:55 &ndash; 3:15</div>
+                        <div class="sched-info">
+                            <div class="ev-title">Coffee, Snacks &amp; Networking</div>
+                        </div>
+                    </div>
+
+                    <div class="sched-row">
+                        <div class="sched-time">3:15 &ndash; 4:30</div>
+                        <div class="sched-info">
+                            <div class="ev-title">Partner-Organized Breakout Sessions</div>
+                            <!-- UPDATE: Replace each line below with partner name and session title -->
+                            <div class="ev-sub">Session A &mdash; Title TBA</div>
+                            <div class="ev-sub">Session B &mdash; Title TBA</div>
+                            <div class="ev-sub">Session C &mdash; Title TBA</div>
+                        </div>
+                    </div>
+
+                    <div class="sched-row">
+                        <div class="sched-time">4:30 &ndash; 5:00</div>
+                        <div class="sched-info">
+                            <div class="ev-title">Closing Remarks</div>
+                            <div class="ev-speaker">Alex Engler</div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /day-2 -->
+
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SPEAKERS
+         ─────────────────────────────────────
+         HOW TO UPDATE:
+         Remove the placeholder cards below and add
+         confirmed speaker cards using this template:
+
+         <div class="speaker-card">
+           <div class="avatar">
+             <img src="path/to/photo.jpg" alt="Full Name">
+           </div>
+           <div class="sp-name">Full Name</div>
+           <div class="sp-affil">Title<br>Institution</div>
+         </div>
+
+         If no photo is available, omit the <img> tag;
+         the grey silhouette will appear automatically.
+    ═══════════════════════════════════════ -->
+    <section class="speakers" id="speakers">
+        <div class="container">
+            <div class="section-label">Participants</div>
+            <h2 class="section-title">Speakers &amp; Discussants</h2>
+            <p class="speakers-intro">The MEDIATED Conference brings together leading voices from academia, civil society, media, technology, and government. Confirmed participants will be listed here as invitations are accepted.</p>
+
+            <div class="speakers-grid">
+                <!-- ── PLACEHOLDER CARDS (remove as speakers are confirmed) ── -->
+                <div class="speaker-card placeholder">
+                    <div class="avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+                    <div class="sp-name">Speaker TBA</div>
+                    <div class="sp-affil">Affiliation TBA</div>
+                </div>
+                <div class="speaker-card placeholder">
+                    <div class="avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+                    <div class="sp-name">Speaker TBA</div>
+                    <div class="sp-affil">Affiliation TBA</div>
+                </div>
+                <div class="speaker-card placeholder">
+                    <div class="avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+                    <div class="sp-name">Speaker TBA</div>
+                    <div class="sp-affil">Affiliation TBA</div>
+                </div>
+                <div class="speaker-card placeholder">
+                    <div class="avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+                    <div class="sp-name">Speaker TBA</div>
+                    <div class="sp-affil">Affiliation TBA</div>
+                </div>
+            </div>
+
+            <p class="speakers-footnote">More speakers to be announced as confirmations are received.</p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         ATTEND / CONTACT
+    ═══════════════════════════════════════ -->
+    <section class="attend" id="attend">
+        <div class="container">
+            <div class="section-label">Attendance</div>
+            <h2>Invitation Only</h2>
+            <p>The Penn MEDIATED Conference is an invitation-only event. If you are interested in attending or would like to learn more, please reach out to us directly.</p>
+            <a href="mailto:contact-us@infodem.edu" class="btn-contact">Contact Us &rarr;</a>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         FOOTER
+    ═══════════════════════════════════════ -->
+    <footer>
+        <div class="ft-org">Penn Center on Media, Technology, and Democracy (Penn MEDIATED)</div>
+        <div class="ft-addr">University of Pennsylvania &bull; Philadelphia, Pennsylvania</div>
+        <div class="ft-email"><a href="mailto:contact-us@infodem.edu">contact-us@infodem.edu</a></div>
+    </footer>
+
+    <script>
+        /* ── Day tab switcher ── */
+        function switchDay(index) {
+            document.querySelectorAll('.day-tab').forEach((t, i) =>
+                t.classList.toggle('active', i === index));
+            document.querySelectorAll('.day-content').forEach((c, i) =>
+                c.classList.toggle('active', i === index));
+        }
+
+        /* ── Smooth scroll ── */
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                const target = document.querySelector(a.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+
+</body>
+</html>
