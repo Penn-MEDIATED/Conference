@@ -368,7 +368,7 @@
 
     .about-top {
       display: grid; grid-template-columns: 5fr 6fr;
-      gap: 6rem; align-items: start; margin-bottom: 4rem;
+      gap: 6rem; align-items: center; margin-bottom: 4rem;
     }
     .about-lead {
       font-family: var(--font-display);
@@ -378,8 +378,20 @@
       border-left: 4px solid var(--electric);
       padding-left: 1.5rem;
     }
-    .about-body { font-size: 1.02rem; color: var(--text-mid); line-height: 1.82; }
+    .about-body-lead {
+      font-size: 1.15rem; font-weight: 500;
+      color: var(--dark); line-height: 1.75;
+      margin-bottom: 1.25rem;
+    }
+    .about-body { font-size: 1rem; color: var(--text-mid); line-height: 1.82; }
     .about-body + .about-body { margin-top: 1.25rem; }
+
+    .pillars-intro {
+      font-family: var(--font-body);
+      font-size: 0.95rem; font-weight: 600;
+      color: var(--mid-gray); letter-spacing: 0.04em;
+      text-transform: uppercase; margin-bottom: 1.5rem;
+    }
 
     /* Pillars: 2×2 grid, editorial numbered */
     .pillars-grid {
@@ -814,7 +826,7 @@
           </blockquote>
         </div>
         <div class="reveal reveal-delay-2">
-          <p class="about-body">
+          <p class="about-body-lead">
             The Penn Center on Media, Technology, and Democracy (Penn MEDIATED) is pleased to host our inaugural annual convening focused on the rigorous study of the information ecosystem and its impact on democracy.
           </p>
           <p class="about-body">
@@ -823,6 +835,7 @@
         </div>
       </div>
 
+      <p class="pillars-intro reveal">During this conference, we will:</p>
       <div class="pillars-grid reveal">
         <div class="pillar">
           <div class="pillar-num">01</div>
