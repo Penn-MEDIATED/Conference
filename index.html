@@ -646,7 +646,7 @@
 
     .contact-grid {
       display: grid; grid-template-columns: 1fr 1fr;
-      gap: 6rem; align-items: start; margin-top: 3rem;
+      gap: 6rem; align-items: center; margin-top: 0;
     }
     .contact-intro {
       font-size: 1.02rem; color: var(--text-mid);
@@ -1503,20 +1503,18 @@
   <!-- ===== CONTACT ===== -->
   <section id="contact">
     <div class="section-inner">
-      <span class="eyebrow reveal">Get Involved</span>
-      <h2 class="section-h reveal">Contact Us</h2>
-
       <div class="contact-grid">
         <div class="reveal">
+          <span class="eyebrow">Get Involved</span>
           <p class="contact-intro">
             The Penn MEDIATED Conference is an invitation-only event. We welcome inquiries from researchers, practitioners, and organizations working at the intersection of media, technology, and democracy.
           </p>
           <p class="contact-intro">
             If you would like to be considered for an invitation, present research, or explore partnership opportunities, please get in touch.
           </p>
-          <div style="margin-top:2rem;">
+          <div style="margin-top:2rem; display:flex; flex-direction:column;">
             <div class="contact-email-label">Email</div>
-            <a href="mailto:contact-us@infodem.upenn.edu" class="contact-email">contact-us@infodem.upenn.edu</a>
+            <a href="mailto:contact-us@infodem.upenn.edu" class="contact-email" style="display:block;">contact-us@infodem.upenn.edu</a>
           </div>
         </div>
 
